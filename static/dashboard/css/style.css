@@ -1,0 +1,290 @@
+/* ################## STYLING SIGNUP LOGIN SECTION ####################### */
+
+.signup-login-container{
+    box-shadow: 0px 0px 2.5rem 0rem rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin-bottom: 4rem;
+    padding-top: 3rem;
+}
+
+.signup-login-container form{
+    width: 80%;
+}
+
+.signup-login-heading{
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.signup-login-heading::before{
+    content: "\f234";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: rgb(23, 144, 231);;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.login-heading::before{
+    content: "\f2f6";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: rgb(23, 144, 231);;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.signup-login-form{
+    width: 100%;
+}
+
+.signup-login-input{
+    width: 100%;
+}
+.signup-login-input input{
+    width: 100%;
+    padding: 1.2rem .5rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border-radius: 1px solid black;
+    font-size: 1.5rem;
+}
+
+.signup-login-btn-div{
+    height: 8rem;
+    margin-top: 1.5rem;
+}
+
+.signup-login-input-div{
+    width: 100%;
+}
+
+.signup-login-input-div i{
+    margin-right: 1.2rem;
+    font-size: 1.6rem;
+}
+
+.signup-login-btn{
+    background-color: rgb(60, 173, 243);
+    color: white;
+    padding: 1.2rem 7rem;
+    border-radius: 3rem;
+    border: none;
+    font-size: 2.2rem;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.signup-login-btn:hover{
+    background-color: rgb(23, 144, 231);
+    color: white;
+    padding: 1.2rem 5.5rem;
+    border-radius: 3rem;
+    border: none;
+    font-size: 2.2rem;
+}
+
+.back-to-home-div a{
+    color: black;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: all .3s ease;
+}
+
+.back-to-home-div a::before{
+    content: "\f060";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: rgb(23, 144, 231);
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+a.sign-link::before{
+    content: "\f234";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: rgb(23, 144, 231);
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-left: 6rem;
+}
+
+a.log-link::before{
+    content: "\f2f6";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: rgb(23, 144, 231);
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-left: 6rem;
+}
+
+.back-to-home-div a:hover{
+    color: gray;
+}
+
+/* ############### STYLING TOP NAVIGATION BAR ################# */
+
+.navbar{
+    width: 100%;
+    background-color: rgb(101, 101, 221, 0.9);
+}
+
+.logo{
+    margin-left: 2rem;
+    color: white;
+}
+
+.navbar .logout-btn{
+    border: 1px solid white;
+    padding: .7rem 1.2rem;
+    font-size: 1.7rem;
+    margin: 1rem;
+    color: white;
+    transition: background-color, 0.3s ease-in;
+}
+
+.navbar .logout-btn:hover{
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* #################### STYLING SIDE NAVIGATION BAR ############### */
+
+.side-navbar{
+    width: 25rem;
+    height: 100%;
+    padding: 5rem 1rem;
+    background-color: rgba(211, 211, 211, 0.2);
+    position: fixed;
+    top: 5.6rem;
+    left: 0;
+    z-index: 1;
+}
+
+.side-navbar a{
+    margin-bottom: 1rem;
+    display: block;
+    padding: .8rem 1.5rem;
+    font-size: 1.6rem;
+    /* color: black; */
+}
+
+.side-navbar a:hover{
+    color: white;
+    background-color: rgb(101, 101, 221, 0.9);
+}
+
+.active {
+    color: white;
+    background-color: rgb(101, 101, 221, 0.9);
+}
+
+.side-navbar a:first-child::before{
+    content: "\f406";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.side-navbar a:nth-child(2):before{
+    content: "\e068";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.side-navbar a:nth-child(3):before{
+    content: "\f784";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.side-navbar a:nth-child(4):before{
+    content: "\f084";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.main-content{
+    margin-left: 25rem;
+}
+
+/* ############## STYLING USER CHANGE FORM ############## */
+
+.user-change-form{
+    width: 40rem;
+    padding: 3rem;
+}
+
+.user-change-fields input{
+    padding: .7rem 1rem;
+    outline: none;
+    font-size: 1.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.user-change-fields:first-child::before{
+    content: "\f4ff";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: .5rem;
+    margin-top: .7rem;
+}
+
+.user-change-fields:nth-child(2)::before{
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+.user-change-fields:nth-child(3)::before{
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+
+.user-change-fields:nth-child(4)::before{
+    content: "\f0e0";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-top: .7rem;
+}
+
+.user-change-form .submit-btn{
+    padding: 1.2rem 4rem;
+    border-radius: 2rem;
+    background-color: rgb(69, 176, 243);
+    color: white;
+    border: none;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.user-change-form .submit-btn:hover{
+    background-color: rgb(49, 152, 216);
+}

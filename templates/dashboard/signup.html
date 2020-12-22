@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'util.css' %}">
+
+    <script src="https://kit.fontawesome.com/84e89d6982.js" crossorigin="anonymous"></script>
+    <title>Sign up - OSMS</title>
+</head>
+
+<body>
+    <div class="container flex-column-center">
+        {% for form in forms %}
+        {% if form.errors %}
+        <div class="messages-div flex-row-center">
+            <h2 class="danger">{{form.errors}}</h2>
+            <i class="fas fa-times cross"></i>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="signup-login-heading flex-row-center">
+            <h1 class="sm-heading">Sign Up</h1>
+        </div>
+        <div class="signup-login-container flex-column-center">
+            <form class action="{% url 'signup' %}" method="post"> {% csrf_token %}
+                <div class="signup-login-form flex-column-center">
+
+                    <div class="signup-login-input-div input-icon-username flex-row-center">
+                        <i class="fas fa-user-circle"></i>
+                        <div class="signup-login-input">
+                            {{forms.username}}
+                        </div>
+                    </div>
+
+                    <div class="signup-login-input-div input-icon-fname flex-row-center">
+                        <i class="fas fa-user"></i>
+                        <div class="signup-login-input">
+                            {{forms.first_name}}
+                        </div>
+                    </div>
+
+                    <div class="signup-login-input-div input-icon-lname flex-row-center">
+                        <i class="fas fa-user"></i>
+                        <div class="signup-login-input">
+                            {{forms.last_name}}
+                        </div>
+                    </div>
+
+                    <div class="signup-login-input-div input-icon-email flex-row-center">
+                        <i class="fas fa-envelope"></i>
+                        <div class="signup-login-input">
+                            {{forms.email}}
+                        </div>
+                    </div>
+
+                    <div class="signup-login-input-div input-icon-pass1 flex-row-center">
+                        <i class="fas fa-key"></i>
+                        <div class="signup-login-input">
+                            {{forms.password1}}
+                        </div>
+                    </div>
+
+                    <div class="signup-login-input-div input-icon-pass2 flex-row-center">
+                        <i class="fas fa-unlock"></i>
+                        <div class="signup-login-input">
+                            {{forms.password2}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signup-login-btn-div text-center">
+                    <button type="submit" class="signup-login-btn"> Submit </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="back-to-home-div flex-row-center">
+            <a href="{% url 'home' %}">Back to Home</a>
+            <a class="log-link" href="{% url 'login' %}">Log In</a>
+        </div>
+    </div>
+    <script src="{% static 'dashboard/js/script.js' %}"></script>
+    <script src="{% static 'util.js' %}"></script>
+</body>
+
+</html>

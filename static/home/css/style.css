@@ -1,0 +1,530 @@
+
+/* ################## STYLING NAVIGATION BAR ################# */
+
+.navbar{
+    /* position: relative; */
+    color: rgb(247, 202, 202);
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(101, 101, 221, 0.9);
+}
+
+/* .navbar::before{
+    content: "";
+    width: 100%;
+    height: 5.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(101, 101, 221, 0.9);
+    opacity: 0.95;
+    z-index: -1;
+} */
+
+.logo{
+    margin-left: 2rem;
+    color: white;
+}
+
+.navbar a:not(.btn){
+    padding: 1.3rem 1.5rem;
+    font-size: 2rem;
+    color: white;
+    transition: all .3s ease-in;
+}
+
+.navbar a:not(.btn):hover{
+    border-bottom: .4rem solid black;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.navbar a.btn{
+    border: 1px solid white;
+    padding: .7rem 1.2rem;
+    font-size: 1.7rem;
+    margin: 1rem;
+    color: white;
+    transition: background-color, 0.3s ease-in;
+}
+
+.navbar a.btn:hover{
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.hamburger{
+    display: none;
+}
+
+/* ################## STYLING HEADER ################# */
+
+.header{
+    /* position: relative; */
+    height: 90vh;
+    /* top: -5.6rem; */
+}
+
+.header::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("/static/home/img/header-img.jpg") no-repeat center center/cover;
+    height: 90vh;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* ################## STYLING HEADER CONTENT ################## */
+
+.header-content{
+    margin: auto auto;
+    height: 57rem;
+}
+
+.header-content h2{
+    color: black;
+}
+
+.cursor{
+    animation: cursor 800ms infinite forwards ease-in;
+}
+
+@keyframes cursor{
+    from{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
+}
+
+.btn-register-div{
+    height: 9rem;
+}
+
+.btn-register{
+    margin-top: 2rem;
+    color: black;
+    border: 1px solid black;
+    font-size: 2rem;
+    background: transparent;
+    padding: .9rem 2rem;
+    transition: all .3s ease-in;
+}
+
+.btn-register:hover{
+    background-color: rgb(69, 176, 243);
+    color: white;
+    /* margin-top: -1rem; */
+    padding: 1.2rem 5.5rem;
+    border-radius: 3rem;
+    border: none;
+}
+
+/* ################# STYLING ABOUT SECTION ############### */
+
+.about-content{
+    margin-top: 5rem;
+}
+
+.about-content h1{
+    display: inline-block;
+    font-size: 6rem;
+    letter-spacing: .4rem;
+    margin-bottom: 7rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.about-content h1::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: .5rem;
+    background-color: rgba(0, 0, 255, 0.829);
+    bottom: -1rem;
+    left: 0;
+    animation: underlined 9s infinite both;
+}
+
+@keyframes underlined{
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 100%;
+    }
+    100%{
+        width: 0;
+    }
+}
+
+.about-para{
+    font-size: 1.8rem;
+    color: grey;
+    font-weight: 300;
+    line-height: 2.8rem;
+    letter-spacing: .1rem;
+}
+
+.explore-btn-div{
+    height: 10rem;
+    margin-top: 3rem;
+}
+
+.explore-btn{
+    border: 1px solid black;
+    margin-top: 1rem;
+    font-size: 2.2rem;
+    color: black;
+    padding: 1.2rem 5rem;
+    transition: all 0.3s ease-in;
+    /* background-color: rgba(19, 39, 223, 0.5); */
+}
+
+.explore-btn:hover{
+    background-color: rgb(69, 176, 243);
+    color: white;
+    margin-top: -1rem;
+    padding: 1.2rem 7rem;
+    border-radius: 3rem;
+    border: none;
+}
+
+/* #################### STYLING SERVICES SECTION ################ */
+
+.services-section .container{
+    margin-top: 3rem;
+}
+
+.services-heading h1{
+    display: inline-block;
+    font-size: 6rem;
+    letter-spacing: .4rem;
+    margin-bottom: 7rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.services-heading h1::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: .5rem;
+    background-color: rgba(0, 0, 255, 0.829);
+    bottom: -1rem;
+    left: 0;
+    animation: underlined 9s infinite both;
+}
+
+.card{
+    width: 30%;
+    height: 30rem;
+}
+
+.card-image{
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease-in;
+    position: relative;
+}
+
+.card-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.card-image::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.356);
+    transition: all 0.3s ease-in;
+    opacity: 0;
+}
+
+.service-btn{
+    color: white;
+    border-radius: 3rem;
+    padding: 1.2rem 3rem;
+    background-color: rgb(69, 176, 243);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    transition: all .3s ease-in;
+    z-index: 3;
+    opacity: 0;
+    font-size: 1.4rem;
+}
+
+.service-btn:hover{
+    top: 44%;
+}
+
+.services-cards .card-contents{
+    text-align: center;
+    padding: 1rem;
+    display: none;
+    background-color: rgba(211, 211, 211, 0.2);
+    transition: all 0.1s ease-in;
+}
+
+.card-para{
+    margin-top: .7rem;
+    font-size: 1.3rem
+}
+
+.card:hover .card-image{
+    height: 62%;
+}
+
+.card:hover .card-contents{
+    display: block;
+}
+
+.card:hover .card-image::after{
+    opacity: 1;
+}
+
+.card:hover .service-btn{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+/* ################ STYLING TESTIMONIAL ############## */
+
+.testimonial{
+    margin-top: 9rem;
+    position: relative;
+    padding-bottom: 7rem;
+}
+
+.testimonial::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("/static/home/img/testimonial-bg.jpg") no-repeat center center/cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.testimonial-heading h1{
+    display: inline-block;
+    font-size: 6rem;
+    letter-spacing: .4rem;
+    margin-bottom: 7rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.testimonial-heading h1::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: .5rem;
+    background-color: rgba(0, 0, 255, 0.829);
+    bottom: -1rem;
+    left: 0;
+    animation: underlined 9s infinite both;
+}
+
+.testimonial-img{
+    width: 30rem;
+    height: 30rem;
+    margin-right: 1rem;
+}
+.testimonial-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.testimonial-content{
+    width: 40%;
+    margin-left: 2.5rem;
+}
+
+.testimonial-content h2{
+    color: antiquewhite;
+    margin-bottom: 2rem;
+}
+
+.testimonial-content p{
+    color: rgb(224, 212, 212);
+    font-size: 2rem;
+}
+
+/* ################# STYLING CONTACT US ################## */
+
+.form-items{
+    margin-top: 5rem;
+}
+
+.name-email{
+    width: 70%;
+}
+
+.name-email input{
+    width: 46%;
+    outline: none;
+    border: none;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+    font-size: 1.7rem;
+}
+
+.form-items textarea{
+    width: 70%;
+    max-width: 70%;
+    max-height: 4rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    margin-top: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+    padding-left: 1rem;
+}
+
+.contact-heading h2{
+    display: inline-block;
+    margin-top: 6rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.contact-heading h2::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: .5rem;
+    background-color: rgba(0, 0, 255, 0.829);
+    bottom: -1rem;
+    left: 0;
+    animation: underlined 9s infinite both;
+}
+
+.contact-heading .contact-heading-show{
+    display: none;
+}
+
+.contact-btn-div{
+    height: 10rem;
+    margin-top: 3rem;
+}
+
+.contact-btn{
+    border: 1px solid black;
+    background: transparent;
+    margin-top: 1rem;
+    font-size: 2.2rem;
+    color: black;
+    padding: 1.2rem 5rem;
+    transition: all 0.3s ease-in;
+    font-family: 'Playfair Display', serif;
+    /* background-color: rgba(19, 39, 223, 0.5); */
+}
+
+.contact-btn:hover{
+    background-color: rgb(69, 176, 243);
+    color: white;
+    margin-top: -1rem;
+    padding: 1.2rem 7rem;
+    border-radius: 3rem;
+    border: none;
+}
+
+/* ###################### STYLING FOOTER #################### */
+
+.footer-items{
+    position: relative;
+}
+
+.footer-items::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,10);
+    z-index: -1;
+}
+
+.footer-items{
+    margin-top: 3rem;
+}
+
+.footer-icons{
+    width: 14rem;
+    margin-top: 3rem;
+}
+
+.icon-div{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background-color: rgb(69, 176, 243);
+    transition: all 0.3s ease-in;
+}
+
+.icon-div a{
+    color: black;
+    padding: 33%;
+}
+
+.icon-div:hover{
+    background-color: white;
+}
+
+.footer-links{
+    margin: 2.5rem 0;
+}
+
+.footer-links a{
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 1rem 1.2rem;
+    transition: all 0.3s ease-in;
+}
+
+.footer-links a:hover{
+    color: rgb(69, 176, 243);
+}
+
+.main-footer{
+    position: relative;
+}
+
+.main-footer::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(69, 176, 243);;
+    z-index: -1;
+}
+
+.main-footer p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    padding: .5rem 0;
+}
+
+.main-footer a{
+    color: black;
+}

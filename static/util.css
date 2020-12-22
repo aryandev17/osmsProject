@@ -1,0 +1,137 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'Playfair Display', serif;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+    color: black;
+}
+
+button{
+    outline: none;
+}
+
+/* ################### UTILITY CLASSES #################### */
+
+.lg-heading{
+    font-size: 4rem;
+}
+
+.md-heading{
+    font-size: 3.3rem;
+}
+
+.sm-heading{
+    font-size: 2.2rem;
+}
+
+.container{
+    max-width: 80%;
+    margin: auto;
+}
+
+.flex-row-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row-space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-row-space-around{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flex-row-space-evenly{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.flex-row-no-center{
+    display: flex;
+}
+
+.flex-column-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column-space-between{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-column-space-around{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flex-column-no-center{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.text-black{
+    color: black;
+}
+
+.text-white{
+    color: white;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.success{
+    color: rgb(6, 175, 6);
+}
+
+.danger{
+    color: red;
+}
+
+.messages-div{
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    margin-bottom: .7rem;
+}
+
+.messages-div h2{
+    font-size: 1.7rem;
+}
+
+.messages-div i{
+    margin-left: 3rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+}

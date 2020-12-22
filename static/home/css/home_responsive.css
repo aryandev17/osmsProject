@@ -1,0 +1,189 @@
+@media (max-width: 768px){
+    html{
+        font-size: 45%;
+    }
+
+    .contact-section .contact-heading .contact-heading-show{
+        display: none;
+    }
+}
+
+@media (max-width: 480px){
+    html{
+        font-size: 40%;
+    }
+
+    .navbar .navitems{
+        display: none;
+    }
+
+    header .header{
+        height: 50vh;
+    }
+
+    header .header::before{
+        height: 50vh;
+    }
+
+    .navbar .log-sign-btn{
+        display: none;
+    }
+
+    .logo{
+        margin-top: 1rem;
+    }
+
+    .hamburger-icon{
+        width: 4.5rem;
+        height: 3.5rem;
+        margin-top: .7rem;
+        margin-right: 1rem;
+    }
+
+    .lines{
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 1rem;
+    }
+
+    .hamburger-icon .line1{
+        transform-origin: 0% 0%;
+        transition: transform 0.8s ease-in-out;
+    }
+    
+    .hamburger-icon .line3{
+        transform-origin: 0% 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .line1rotate{
+        transform: rotate(45deg);
+    }
+    
+    .line2rotate{
+        opacity: 0;
+    }
+    
+    .line3rotate{
+        transform: rotate(-45deg);
+    }
+
+    .navbar .hamburger{
+        display: block;
+        position: relative;
+    }
+
+    .hamburger-menu{
+        height: 50rem;
+        width: 30rem;
+        background-color: rgb(101, 101, 221);
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        top: 0;
+        opacity: 0;
+    }
+
+    .hamburger-links{
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .navbar .hamburger .hamburger-menu a:not(.btn){
+        color: aliceblue;
+        font-size: 3rem;
+    }
+
+    .navbar .hamburger .log-sign-btn{
+        display: block;
+        margin-top: 5rem;
+    }
+
+    .gayab-mode-off{
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .navbar .hamburger .log-sign-btn a.btn{
+        font-size: 2.5rem;
+    }
+
+    .ham-menu-transition{
+        transform: none;
+    }
+
+    .services-card{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card{
+        width: 95%;
+        height: 35rem;
+        margin-left: .7rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .testimonial-part{
+        flex-direction: column;
+    }
+
+    .testimonial-part .testimonial-img{
+        width: 35rem;
+        height: 35rem;
+    }
+
+    .testimonial-content{
+        margin-right: 2.5rem;
+        margin-top: 1.5rem;
+        width: 85%;
+    }
+
+    .contact-section .contact-heading .contact-heading-hide{
+        display: none;
+    }
+
+    .contact-section .contact-heading .contact-heading-show{
+        display: block;
+    }
+
+    .name-email{
+        width: 85%;
+    }
+
+    .form-items textarea.message{
+        width: 85%;
+    }
+}
+
+@media (max-width: 900px and orientation: landscape){
+    header .header{
+        height: 90vmax;
+    }
+
+    header .header::before{
+        height: 90vmax;
+    }
+
+    .contact-heading .contact-heading-show{
+        display: block;
+    }
+
+    .contact-heading .contact-heading-hide{
+        display: none;
+    }
+}
+
+@media (max-width: 280px){
+    html{
+        font-size: 35%;
+    }
+}
+
+@media (max-width: 280px){
+    html{
+        font-size: 35%;
+    }
+}

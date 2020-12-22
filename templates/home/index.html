@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Home - OSMS {% endblock title %}
+
+{% block header %}
+
+<div class="header">
+    <div class="container">
+        <div class="header-content flex-column-center">
+            <h2 class="lg-heading"><span id="txt" class="text-center"></span> <span class="cursor">|</span></h2>
+
+            <div class="btn-register-div flex-column-center">
+                {% if not request.user.is_authenticated %}
+                <a href="{% url 'signup' %}" class="btn-register">Register</a>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'user_profile' %}" class="btn-register">Dashboard</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock header %}
+
+{% block body %}
+
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="about-content flex-column-center">
+            <div class="about-head-para flex-column-center">
+                <h1>About OSMS</h1>
+                <p class="about-para text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+                    rerum molestias eum, ipsa ratione perspiciatis fuga cupiditate eius voluptas iusto minima, unde
+                    sapiente
+                    atque dolor voluptatibus magni maiores natus. Assumenda in quia porro repellendus dolores modi
+                    perspiciatis quidem fuga voluptatum aliquid cum, delectus fugit impedit odio quam exercitationem
+                    tempora
+                    perferendis adipisci architecto labore! Magnam atque nulla delectus necessitatibus, saepe nihil?</p>
+            </div>
+
+            <div class="explore-btn-div flex-column-center">
+                <a href="" class="explore-btn">Explore</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-section" id="services">
+    <div class="container flex-column-no-center">
+        <div class="services-heading flex-row-center">
+            <h1>Services</h1>
+        </div>
+
+        <div class="services-cards flex-row-space-between flex-wrap">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'home/img/service1.jpg' %}" alt="">
+                    <a href="" class="service-btn">Read More</a>
+                </div>
+
+
+                <div class="card-contents flex-column-center">
+                    <h2 class="sm-heading">Service 1</h2>
+                    <p class="card-para text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
+                        repellendus nihil maiores illum saepe quam?</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'home/img/service2.jpg' %}" alt="">
+                    <a href="" class="service-btn">Read More</a>
+                </div>
+
+                <div class="card-contents flex-column-center">
+                    <h2 class="sm-heading">Service 2</h2>
+                    <p class="card-para text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
+                        repellendus nihil maiores illum saepe quam?</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static 'home/img/service3.jpg' %}" alt="">
+                    <a href="" class="service-btn">Read More</a>
+                </div>
+
+                <div class="card-contents flex-column-center">
+                    <h2 class="sm-heading">Service 1</h2>
+                    <p class="card-para text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
+                        repellendus nihil maiores illum saepe quam?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonial">
+    <div class="testimonial-head flex-column-center">
+        <div class="testimonial-heading flex-row-center">
+            <h1>Testimonial</h1>
+        </div>
+
+        <div class="testimonial-part flex-row-center">
+            <div class="testimonial-img">
+                <img src="{% static 'home/img/user-img.png' %}" alt="">
+            </div>
+
+            <div class="testimonial-content flex-column-center">
+                <h2 class="lg-heading">Fantastic Service !</h2>
+                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolorem
+                    quidem voluptatibus voluptas exercitationem tenetur harum asperiores culpa, cumque explicabo id
+                    veniam, sint autem ipsa nulla animi praesentium neque labore!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="container">
+        <form action="/" method="post"> {% csrf_token %}
+            <div class="contact-heading flex-row-center">
+                <h2 class="contact-heading-hide lg-heading">
+                    Let us know about your problems or ideas !
+                </h2>
+                <h2 class="contact-heading-show lg-heading">
+                    Contact Us
+                </h2>
+            </div>
+
+            {% if messages %}
+            <div style="width: 50%; margin: auto; margin-top: 3rem;" class="messages-div flex-row-center">
+                {% for message in messages %}
+                <h2 class="{{message.tags}} sm-heading">{{message}}</h2>
+                <i class="fas fa-times" id="cross-message" onclick="cross_message()"></i>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="form-items flex-column-center">
+                <div class="name-email flex-row-space-between">
+                    {{form.name}}
+                    {{form.email}}
+                </div>
+
+                {{form.message}}
+            </div>
+
+            <div class="contact-btn-div flex-row-center">
+                <button type="submit" class="contact-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock body %}

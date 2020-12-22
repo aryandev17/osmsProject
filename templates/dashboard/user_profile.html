@@ -1,0 +1,21 @@
+{% extends 'dashboard_base.html' %}
+
+{% block profileactive %} active {% endblock profileactive %}
+
+{% block title %}User Profile - OSMS {% endblock title %}
+
+{% block body %}
+
+<div class="user-change-form">
+    <form action="{% url 'user_profile' %}" method="POST"> {% csrf_token %}
+        <div class="user-change-input flex-column-no-center">
+            {% for form in forms %}
+            <div class="user-change-fields flex-row-no-center">{{form}}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="submit-btn"> Submit </button>
+    </form>
+</div>
+
+{% endblock body %}
