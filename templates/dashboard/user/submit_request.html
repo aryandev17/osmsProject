@@ -1,0 +1,53 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %} Submit Request - OSMS {% endblock title %}
+
+{% block submitactive %} active {% endblock submitactive %}
+
+{% block body %}
+
+<div class="submit-request-form">
+    {% if messages %}
+            <div style="width: 55%; margin: auto; margin-bottom: 2rem;" class="messages-div flex-row-center">
+                {% for message in messages %}
+                <h2 class="{{message.tags}} sm-heading">{{message}} {{message.extra_tags}}</h2>
+                <i class="fas fa-times cross"></i>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+    <form action="{% url 'submit_request' %}" method="post"> {% csrf_token %}
+    <div class="info-desc-input flex-column-no-center">
+        {{forms.request_info}}
+        {{forms.description}}
+    </div>
+
+    <div class="name-add1-add2-div flex-column-no-center">
+        {{forms.name}}
+
+        <div class="add1-add2 flex-row-space-between">
+            {{forms.address_line_1}}
+            {{forms.address_line_2}}
+        </div>
+    </div>
+
+    <div class="city-state-zip flex-row-space-between">
+        {{forms.city}}
+        {{forms.state}}
+        {{forms.zip_code}}
+    </div>
+
+    <div class="mobile-email-date flex-row-space-between">
+        {{forms.mobile}}
+        {{forms.email}}
+        {{forms.date}}
+    </div>
+
+    <div class="submit-reset-btn flex-row-no-center">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+</div>
+
+{% endblock body %}

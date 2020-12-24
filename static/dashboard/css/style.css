@@ -288,3 +288,145 @@ a.log-link::before{
 .user-change-form .submit-btn:hover{
     background-color: rgb(49, 152, 216);
 }
+
+/* ############### STYLING SUBMIT REQUEST PAGE ############## */
+
+.submit-request-form{
+    width: 96%;
+    padding: 2rem;
+}
+
+input{
+    padding: .8rem;
+    margin-bottom: 2rem;
+    outline: none;
+}
+
+.info-desc-input textarea{
+    padding: .7rem;
+    margin-bottom: 2rem;
+    max-height: 10rem;
+    outline: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+}
+
+.add1-add2 input{
+    width: 49%;
+}
+
+.city-state-zip input{
+    width: 32%;
+}
+
+.mobile-email-date input{
+    width: 32%;
+}
+
+.submit-reset-btn button{
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    background-color: rgb(41, 157, 230);
+    color: white;
+    border: 1px solid white;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.submit-reset-btn button[type="reset"]{
+    background: rgba(211, 211, 211, 0.308);
+    border: 1px solid black;
+    color: black;
+}
+
+.submit-reset-btn button[type=submit]:hover{
+    background-color: rgb(26, 126, 189);
+    color: white;
+}
+
+.submit-reset-btn button[type=reset]:hover{
+    background-color: rgb(26, 126, 189);
+    color: white;
+    border: none;
+}
+
+/* ############## STYLING SERVICE STATUS PAGE ################## */
+
+.service-status-div{
+    padding: 2rem;
+}
+
+.service-status-div h2{
+    margin-bottom: 4rem;
+}
+
+.service-id-input input{
+    margin-left: 1rem;
+}
+
+.status-desc{
+    width: 40%;
+    color: rgb(26, 126, 189);
+    background: rgba(211, 211, 211, 0.335);
+    padding: 1rem 4rem;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-top: 2rem;
+}
+
+/* ############### STYLING CHANGE PASSWORD FORM ################ */
+
+.change-password-form-div{
+    padding: 2rem;
+    width: 35%;
+}
+
+.password-input:first-child::before{
+    content: "\f084";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-top: .7rem;
+}
+
+.password-input:nth-child(2)::before{
+    content: "\f13e";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+
+.password-input:nth-child(3)::before{
+    content: "\f3c1";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: .7rem;
+    margin-top: .7rem;
+}
+
+.change-password-form .submit-btn button{
+    padding: 1rem 4rem;
+    font-size: 1.7rem;
+    border-radius: 2rem;
+    color: white;
+    background-color: rgb(26, 126, 189);
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+
+.change-password-form .submit-btn button:hover{
+    background-color: rgb(48, 150, 214);
+}

@@ -1,0 +1,31 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %} Service Status - OSMS {% endblock title %}
+
+{% block serviceactive %} active {% endblock serviceactive %}
+
+{% block body %} 
+
+<div class="service-status-div">
+<form action="{% url 'service_status' %}" method="post"> {% csrf_token %}
+
+<h2 class="sm-heading">Enter Service Id to track your Request</h2>
+
+<div class="service-id-input">
+<input type="text" name="service_id" placeholder="Service Id">
+
+<input type="submit" value="Submit">
+</div>
+
+{% if status %}
+{% for details in status %}
+<div class="status-desc flex-row-center">
+    {{details.status_description}}
+</div>
+{% endfor %}
+{% endif %}
+
+</form>
+</div>
+
+{% endblock body %}

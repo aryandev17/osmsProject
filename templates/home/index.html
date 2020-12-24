@@ -16,8 +16,12 @@
                 <a href="{% url 'signup' %}" class="btn-register">Register</a>
                 {% endif %}
 
-                {% if request.user.is_authenticated %}
+                {% if not request.user.is_superuser and request.user.is_authenticated %}
                 <a href="{% url 'user_profile' %}" class="btn-register">Dashboard</a>
+                {% endif %}
+
+                {% if request.user.is_superuser %}
+                <a href="{% url 'admin_dashboard' %}" class="btn-register">Dashboard</a>
                 {% endif %}
             </div>
         </div>

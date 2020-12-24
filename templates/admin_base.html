@@ -8,7 +8,8 @@
     <title> {% block title %} {% endblock title %} </title>
     <!-- <link rel="stylesheet" href="{% static 'home/css/style.css' %}"> -->
     <link rel="stylesheet" href="{% static 'util.css' %}">
-    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/admin_style.css' %}">
 
     <!-- Google fonts -->
 
@@ -31,10 +32,10 @@
     </nav>
 
     <div class="side-navbar">
-        <a href="{% url 'user_profile' %}" class="{% block profileactive %} {% endblock profileactive %}">Profile</a>
-        <a href="{% url 'submit_request' %}" class="{% block submitactive %} {% endblock submitactive %}">Submit Request</a>
-        <a href="{% url 'service_status' %}" class="{% block serviceactive %} {% endblock serviceactive %}">Service Status</a>
-        <a href="{% url 'change_password' %}" class="{% block changeactive %} {% endblock changeactive %}">Change Password</a>
+        <a href="" class="{% block dashboardactive %} {% endblock dashboardactive %}">Dashboard</a>
+        <a href="" class="{% block workactive %} {% endblock workactive %}">Work Order</a>
+        <a href="" class="{% block requestactive %} {% endblock requestactive %}">Requests</a>
+        <a href=" " class="{% block technicianactive %} {% endblock technicianactive %}">Technician</a>
     </div>
 
     <div class="main-content">

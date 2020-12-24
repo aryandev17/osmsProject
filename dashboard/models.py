@@ -11,10 +11,21 @@ class SubmitRequest(models.Model):
     address_line_2 = models.CharField(max_length=200)
     city = models.CharField(max_length=25)
     state = models.CharField(max_length=25)
+    zip_code = models.IntegerField(null=True)
     email = models.EmailField()
     mobile = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name + " " + self.state
+
+class ServiceStatus(models.Model):
+    serial_no = models.AutoField(primary_key=True)
+    service_id = models.IntegerField()
+    status_description = models.CharField(max_length=5000)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.service_id) + self.status_description[0:10] + "...."
+    
     
