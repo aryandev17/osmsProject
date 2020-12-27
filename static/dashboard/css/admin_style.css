@@ -313,19 +313,34 @@ input{
 }
 
 #assigned-table table{
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #assigned-table th, td { 
     padding: .5rem;
-    width: 15rem;
-    border-bottom: 1px solid black;
+    width: 13rem;
+    border: none;
     border-collapse: collapse;
     font-size: 1.6rem;
 }
 
-td{
-    text-align: center;
+#assigned-table tr .big-cell{
+    width: 25rem;
+}
+
+#assigned-table tr .big-date-cell{
+    width: 15rem;
+}
+
+#assigned-table table td{
+    text-align: left;
+    border-bottom: 1px solid black
+}
+
+#assigned-table table th{
+    text-align: left;
+    border-bottom: 1px solid black
 }
 
 #assigned-table tr:nth-child(even) {

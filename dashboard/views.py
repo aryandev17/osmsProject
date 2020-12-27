@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, HttpRespons
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm
-from .models import ServiceStatus, SubmitRequest
+from .models import ServiceStatus, SubmitRequest, AssignTechnician
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth import get_user_model
@@ -180,4 +180,7 @@ def admin_requests(request):
     return render(request, "dashboard/admin/admin_requests.html", context)
 
 def assigned_order(request):
-    return render(request, "dashboard/admin/assigned_order.html")
+    if request.user.is_superuser:
+        assigned_order_object = AssignTechnician.objects.all()
+        context = {"assigned_orders":assigned_order_object}
+    return render(request, "dashboard/admin/assigned_order.html", context)

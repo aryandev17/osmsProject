@@ -10,22 +10,28 @@
         <h2 class="md-heading text-center">Assigned Work Details</h2>
         <table>
             <tr>
-                <th>Request Id</th>
-                <th>Request Info</th>
+                <th>Req. ID</th>
+                <th class="big-cell">Request Info</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>City</th>
                 <th>Mobile</th>
                 <th>Technician</th>
-                <th>Assigned Date</th>
+                <th class="big-date-cell">Assigned Date</th>
                 <th>Actions</th>
             </tr>
 
-            {% for user in users %}
+            {% for order in assigned_orders %}
             <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.email}}</td>
+                <td>{{order.request_id}}</td>
+                <td>{{order.request_info|truncatechars:25}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.address_line_1}}</td>
+                <td>{{order.city}}</td>
+                <td>{{order.mobile}}</td>
+                <td>{{order.technician}}</td>
+                <td>{{order.date}}</td>
+                <td>Actions</td>
             </tr>
             {% endfor %}
             
