@@ -32,9 +32,9 @@
     </nav>
 
     <div class="side-navbar">
-        <a href="" class="{% block dashboardactive %} {% endblock dashboardactive %}">Dashboard</a>
-        <a href="" class="{% block workactive %} {% endblock workactive %}">Work Order</a>
-        <a href="" class="{% block requestactive %} {% endblock requestactive %}">Requests</a>
+        <a href="{% url 'admin_dashboard' %}" class="{% block dashboardactive %} {% endblock dashboardactive %}">Dashboard</a>
+        <a href="{% url 'assigned_order' %}" class="{% block assignedactive %} {% endblock assignedactive %}">Assigned Order</a>
+        <a href="{% url 'admin_requests' %}" class="{% block requestactive %} {% endblock requestactive %}">Requests</a>
         <a href=" " class="{% block technicianactive %} {% endblock technicianactive %}">Technician</a>
     </div>
 

@@ -1,0 +1,83 @@
+{% extends 'admin_base.html' %}
+
+{% block title %} Requests - OSMS {% endblock title %}
+
+{% block requestactive %} active {% endblock requestactive %}
+
+{% load widget_tweaks %}
+
+{% block body %}
+
+<div class="flex-row-no-center">
+    <div class="requests-div flex-column-no-center">
+    {% if request_object %}
+        {% for request in requests_object %}
+        <div class="request-box">
+            <div class="request-id-sm-div flex-row-center"># {{request.serial_no}}</div>
+
+            <div class="request-details flex-column-center">
+                <h2 class="info-heading">Request Info : {{request.request_info|truncatechars:15}}</h2>
+                <p>{{request.description|truncatechars:20}}</p>
+                <h2 class="request-date-heading">Request Date : <span class="request-date">{{request.date}}</span></h2>
+            </div>
+
+            <form action="" method="POST"> {% csrf_token %}
+                <input type="hidden" name="id" value="{{request.serial_no}}">
+                <div class="view-button-div">
+                    <button type="submit" class="view-btn">View</button>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+
+        {% else %}
+
+        <h2 class="sm-heading">There are no pending Requests</h2>
+        {% endif %}
+    </div>
+
+    <div class="assign-form-div">
+        <h2 class="text-center sm-heading">Assign Technician</h2>
+        <form action="{% url 'admin_requests' %}" method="post"> {% csrf_token %}
+            <div class="request-id-input">
+                {% render_field forms.request_id value=request_object2.serial_no %}
+            </div>
+            <div class="info-desc-input flex-column-no-center">
+                {% render_field forms.request_info value=request_object2.request_info %}
+                {% render_field forms.description value=request_object2.description %}
+            </div>
+
+            <div class="name-add1-add2-div flex-column-no-center">
+                {% render_field forms.name value=request_object2.name %}
+
+                <div class="add1-add2 flex-row-space-between">
+                    {% render_field forms.address_line_1 value=request_object2.address_line_1 %}
+                    {% render_field forms.address_line_2 value=request_object2.address_line_2 %}
+                </div>
+            </div>
+
+            <div class="city-state-zip flex-row-space-between">
+                {% render_field forms.city value=request_object2.city %}
+                {% render_field forms.state value=request_object2.state %}
+                {% render_field forms.zip_code value=request_object2.zip_code %}
+            </div>
+
+            <div class="mobile-email-date flex-row-space-between">
+                {% render_field forms.mobile value=request_object2.mobile %}
+                {% render_field forms.email value=request_object2.email %}
+                {% render_field forms.date value=request_object2.date %}
+            </div>
+
+            <div class="assign-technician-input flex-row-no-center">
+                {{forms.technician}}
+            </div>
+
+            <div class="submit-reset-btn flex-row-no-center">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

@@ -7,6 +7,10 @@
 {% block body %}
 
 <div class="user-change-form">
+
+    <div class="edit-profile-heading">
+        <h2 class="md-heading">Edit your Profile</h2>
+    </div>
     <form action="{% url 'user_profile' %}" method="POST"> {% csrf_token %}
         <div class="user-change-input flex-column-no-center">
             {% for form in forms %}

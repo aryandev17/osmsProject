@@ -26,6 +26,23 @@ class ServiceStatus(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.service_id) + self.status_description[0:10] + "...."
+        return "Request Id: " + str(self.service_id) + " - " + self.status_description[0:10] + "...."
     
+class AssignTechnician(models.Model):
+    serial_no = models.AutoField(primary_key=True)
+    request_id = models.IntegerField(null=True)
+    request_info = models.CharField(max_length=100)
+    description = models.TextField()
+    name = models.CharField(max_length=25)
+    address_line_1 = models.CharField(max_length=200)
+    address_line_2 = models.CharField(max_length=200)
+    city = models.CharField(max_length=25)
+    state = models.CharField(max_length=25)
+    zip_code = models.IntegerField(null=True)
+    email = models.EmailField()
+    mobile = models.IntegerField()
+    technician = models.CharField(max_length=50)
+    date = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return self.name + " " + self.state

@@ -222,6 +222,10 @@ a.log-link::before{
 
 /* ############## STYLING USER CHANGE FORM ############## */
 
+.edit-profile-heading{
+    margin-bottom: 2rem;
+}
+
 .user-change-form{
     width: 40rem;
     padding: 3rem;

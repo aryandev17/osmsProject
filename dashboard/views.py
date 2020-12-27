@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
-from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm
+from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm
 from .models import ServiceStatus, SubmitRequest
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
@@ -147,6 +148,36 @@ def change_password(request):
 
 def admin_dashboard(request):
     if request.user.is_superuser:
-        return render(request, "dashboard/admin/admin_dashboard.html")
+        requests_object = SubmitRequest.objects.all()
+        User = get_user_model()
+        users = User.objects.all()
+        count_requests = len(requests_object)
+        context = {"count_requests":count_requests, "users":users}
+        return render(request, "dashboard/admin/admin_dashboard.html", context)
     else:
-        return HttpResponse("Bhaag")
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
+
+def admin_requests(request):
+    if request.user.is_superuser:
+        requests_object = SubmitRequest.objects.all()
+        if request.method == "POST":
+            request_id = request.POST.get("id")
+            request_object2 = SubmitRequest.objects.filter(serial_no= request_id).first()
+            forms = AssignTechnicianForm(request.POST)
+            context = {"forms":forms, "requests_object":requests_object, "request_id":request_id, "request_object2":request_object2}
+            if forms.is_valid():
+                forms.save()
+                delete_request = SubmitRequest.objects.filter(serial_no=request.POST.get("request_id")).first()
+                print(delete_request)
+                delete_request.delete()
+                return redirect("admin_requests")
+
+        else:
+            forms = AssignTechnicianForm()
+            context = {"forms":forms, "requests_object":requests_object}
+        
+
+    return render(request, "dashboard/admin/admin_requests.html", context)
+
+def assigned_order(request):
+    return render(request, "dashboard/admin/assigned_order.html")

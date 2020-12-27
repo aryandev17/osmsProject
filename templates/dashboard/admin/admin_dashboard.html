@@ -3,3 +3,51 @@
 {% block title %} Admin Dashboard - OSMS {% endblock title %}
 
 {% block dashboardactive %} active {% endblock dashboardactive %}
+
+{% block body %}
+
+<div class="table-details-div flex-row-no-center">
+
+    <div class="details-main-div">
+        <div class="request-received-div flex-column-center">
+            <p>Request Received</p>
+            <p class="count">{{count_requests}}</p>
+            <a href="">View</a>
+        </div>
+
+        <div class="assigned-work-div flex-column-center">
+            <p>Assigned Work</p>
+            <p class="count">54</p>
+            <a href="">View</a>
+        </div>
+
+        <div class="no-technician-div flex-column-center">
+            <p>No. of technicians</p>
+            <p class="count">54</p>
+            <a href="">View</a>
+        </div>
+    </div>
+
+    <div class="table-div" id="requests-table">
+        <h2 class="md-heading text-center">List of Requesters</h2>
+        <table>
+            <tr>
+                <th>Requester Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+
+
+</div>
+{% endblock body %}

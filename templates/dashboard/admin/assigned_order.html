@@ -1,0 +1,35 @@
+{% extends 'admin_base.html' %}
+
+{% block title %} Assigned Work - OSMS {% endblock title %}
+
+{% block assignedactive %} active {% endblock assignedactive %}
+
+{% block body %}
+
+<div class="table-div" id="assigned-table">
+        <h2 class="md-heading text-center">Assigned Work Details</h2>
+        <table>
+            <tr>
+                <th>Request Id</th>
+                <th>Request Info</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Mobile</th>
+                <th>Technician</th>
+                <th>Assigned Date</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+
+{% endblock body %}

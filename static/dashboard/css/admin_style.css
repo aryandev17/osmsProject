@@ -1,6 +1,10 @@
 .navbar{
     width: 100%;
     background-color: rgb(101, 101, 221, 0.9);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .logo{
@@ -89,4 +93,245 @@
     color: black;
     font-weight: 900;
     margin-right: .6rem;
+}
+
+.details-main-div{
+    width: 17rem;
+    margin-left: 3rem;
+}
+
+.details-main-div div{
+    width: 100%;
+    height: 17rem;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+    margin-top: 2rem;
+}
+
+.details-main-div div:first-child{
+    margin-top: 2rem;
+    background-color: rgb(101, 101, 221, 0.9);
+    color: white;
+    font-size: 1.6rem;
+}
+
+.details-main-div div:nth-child(2){
+    background-color: rgb(175, 41, 175);
+    color: white;
+    font-size: 1.6rem;
+}
+
+.details-main-div div:nth-child(3){
+    background-color: rgb(23, 144, 231);
+    color: white;
+    font-size: 1.6rem;
+}
+
+.details-main-div p{
+    margin-bottom: 1.3rem;
+}
+
+.count{
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+.details-main-div div a{
+    color: white;
+}
+
+.table-div{
+    padding: 4rem;
+}
+
+.table-div table{
+    margin-top: 4rem;
+    margin-left: 3rem;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 1.6rem;
+}
+
+th, td { 
+    padding: 1rem;
+    width: 26rem;
+}
+
+td{
+    text-align: center;
+}
+
+#requests-table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+#requests-table tr:nth-child(odd) {
+background-color: #fff;
+}
+
+/* ################## STYLING ADMIN REQUESTS PANEL ############# */
+
+.requests-div{
+    width: 32%;
+    padding: 3rem;
+}
+
+.request-id-sm-div{
+    width: 18%;
+    height: 2.8rem;
+    background-color: rgb(101, 101, 221, 0.9);
+    color: white;
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.request-box{
+    width: 99%;
+    border: 1px solid black;
+    height: 17.5rem;
+    margin-bottom: 3rem;
+}
+
+.info-heading{
+    margin: 1rem 0;
+}
+
+.request-date-heading{
+    margin-top: 1rem;
+}
+
+.request-details p{
+    font-size: 1.5rem;
+}
+
+.request-date{
+    font-family: serif;
+    color: gray;
+}
+
+.view-button-div{
+    text-align: right;
+}
+
+.view-btn{
+    padding: .7rem 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(101, 101, 221, 0.9);
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 1.2rem;
+    margin-right: 2rem;
+    border-radius: .3rem;
+}
+
+/* ############### STYLING ADMIN REQUEST PAGE ############## */
+
+.assign-form-div{
+    width: 56%;
+    padding: 3rem;
+    background-color: rgba(211, 211, 211, 0.438);
+    position: fixed;
+    right: 0;
+    top: 5.7rem;
+    z-index: 1;
+}
+
+.assign-form-div h2{
+    margin-bottom: 3rem;
+}
+
+input{
+    padding: .8rem;
+    margin-bottom: 2rem;
+    outline: none;
+}
+
+.request-id-input input{
+    width: 100%;
+    background-color: rgba(211, 211, 211, 0.363);
+    color: black;
+    outline: none;
+    border: 1px solid black;
+}
+
+.add1-add2 input{
+    width: 49%;
+}
+
+.city-state-zip input{
+    width: 32%;
+}
+
+.mobile-email-date input{
+    width: 32%;
+}
+
+.submit-reset-btn button{
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    background-color: rgb(41, 157, 230);
+    color: white;
+    border: 1px solid white;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.submit-reset-btn button[type="reset"]{
+    background: rgba(211, 211, 211, 0.308);
+    border: 1px solid black;
+    color: black;
+}
+
+.submit-reset-btn button[type=submit]:hover{
+    background-color: rgb(26, 126, 189);
+    color: white;
+}
+
+.submit-reset-btn button[type=reset]:hover{
+    background-color: rgb(26, 126, 189);
+    color: white;
+    border: none;
+}
+
+/* ############### STYLING ASSIGNED WORK PAGE ############### */
+
+.table-div{
+    padding: 4rem;
+}
+
+.table-div table{
+    margin-top: 4rem;
+    margin-left: 3rem;
+}
+
+#assigned-table table{
+    border-bottom: 1px solid black;
+}
+
+#assigned-table th, td { 
+    padding: .5rem;
+    width: 15rem;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    font-size: 1.6rem;
+}
+
+td{
+    text-align: center;
+}
+
+#assigned-table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+#assigned-table tr:nth-child(odd) {
+    background-color: #fff;
 }
