@@ -12,19 +12,19 @@
         <div class="request-received-div flex-column-center">
             <p>Pending Requests</p>
             <p class="count">{{count_requests}}</p>
-            <a href="">View</a>
+            <a href="{% url 'admin_requests' %}">View</a>
         </div>
 
         <div class="assigned-work-div flex-column-center">
             <p>Assigned Work</p>
-            <p class="count">54</p>
-            <a href="">View</a>
+            <p class="count">{{count_assigned}}</p>
+            <a href="{% url 'assigned_order' %}">View</a>
         </div>
 
         <div class="no-technician-div flex-column-center">
             <p>No. of technicians</p>
-            <p class="count">54</p>
-            <a href="">View</a>
+            <p class="count">{{count_technicians}}</p>
+            <a href="{% url 'technician_list' %}">View</a>
         </div>
     </div>
 

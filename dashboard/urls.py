@@ -11,5 +11,11 @@ urlpatterns = [
     path("change_password/", views.change_password, name="change_password"),
     path("admin_dashboard/", views.admin_dashboard, name="admin_dashboard"),
     path("admin_requests/", views.admin_requests, name="admin_requests"),
-    path("assigned_order/", views.assigned_order, name="assigned_order")
+    path("assigned_order/", views.assigned_order, name="assigned_order"),
+    path("technician_list/", views.technician_list, name="technician_list"),
+    path("delete_assigned_order/<int:request_id>", views.delete_assigned_order, name="delete_assigned_order"),
+    path("view_assigned_order/<int:request_id>", views.view_assigned_order, name="view_assigned_order"),
+    path("add_technician/<int:employee_id>", views.add_technician, name="add_technician"),
+    path("delete_technician/<int:employee_id>", views.delete_technician, name="delete_technician"),
+    path("work_report/", views.work_report, name="work_report")
 ]

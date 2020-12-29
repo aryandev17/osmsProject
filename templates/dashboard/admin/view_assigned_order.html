@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assigned Order</title>
+    <link rel="stylesheet" href="{% static 'util.css' %}">
+    <style>
+
+        .assigned-order-details-div h2{
+            margin-top: 2rem;
+        }
+
+        table{
+            margin: auto;
+            margin-top: 3rem;
+            width: 70%;
+        }
+
+        table, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.6rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        td{
+            width: 50%;
+        }
+
+        td:first-child{
+            font-weight: bold;
+        }
+
+        .print-btn-div{
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .print-btn-div input{
+            padding: 1rem 3rem;
+            border: none;
+            outline: none;
+            background-color: rgb(26, 126, 189);
+            font-size: 1.7rem;
+            color: white;
+            border-radius: .5rem;
+            cursor: pointer;
+            transition: all .3s ease-in;
+        }
+
+        .print-btn-div input:hover{
+            background-color: rgb(14, 105, 161);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="assigned-order-details-div">
+    <h2 class="md-heading text-center">Assigned Work Details</h2>
+
+    <table>
+        <tr>
+            <td>Request ID</td>
+            <td>{{assign_order_object.request_id}}</td>
+        </tr>
+        <tr>
+            <td>Request Info</td>
+            <td>{{assign_order_object.request_info}}</td>
+        </tr>
+        <tr>
+            <td>Request Description</td>
+            <td>{{assign_order_object.description}}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{assign_order_object.name}}</td>
+        </tr>
+        <tr>
+            <td>Address Line 1</td>
+            <td>{{assign_order_object.address_line_1}}</td>
+        </tr>
+        <tr>
+            <td>Address Line 2</td>
+            <td>{{assign_order_object.address_line_2}}</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>{{assign_order_object.city}}</td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>{{assign_order_object.state}}</td>
+        </tr>
+        <tr>
+            <td>Zip Code</td>
+            <td>{{assign_order_object.zip_code}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{assign_order_object.email}}</td>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td>{{assign_order_object.mobile}}</td>
+        </tr>
+        <tr>
+            <td>Assigned Date</td>
+            <td>{{assign_order_object.date}}</td>
+        </tr>
+        <tr>
+            <td>Customer's Sign</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Technician's Sign</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div class="print-btn-div">
+        
+        <input type="button" value="Print" onclick="javascript:window.print()">
+    </div>
+    </div>
+</body>
+</html>

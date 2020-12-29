@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
-from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm
-from .models import ServiceStatus, SubmitRequest, AssignTechnician
+from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm
+from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth import get_user_model
@@ -149,10 +149,14 @@ def change_password(request):
 def admin_dashboard(request):
     if request.user.is_superuser:
         requests_object = SubmitRequest.objects.all()
+        assigned_order_object = AssignTechnician.objects.all()
+        technicians_list_object = TechnicianList.objects.all()
         User = get_user_model()
         users = User.objects.all()
         count_requests = len(requests_object)
-        context = {"count_requests":count_requests, "users":users}
+        count_assigned = len(assigned_order_object)
+        count_technicians = len(technicians_list_object)
+        context = {"count_requests":count_requests, "users":users, "count_assigned":count_assigned, "count_technicians":count_technicians}
         return render(request, "dashboard/admin/admin_dashboard.html", context)
     else:
         return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
@@ -177,10 +181,63 @@ def admin_requests(request):
             context = {"forms":forms, "requests_object":requests_object}
         
 
-    return render(request, "dashboard/admin/admin_requests.html", context)
+        return render(request, "dashboard/admin/admin_requests.html", context)
 
 def assigned_order(request):
     if request.user.is_superuser:
         assigned_order_object = AssignTechnician.objects.all()
         context = {"assigned_orders":assigned_order_object}
-    return render(request, "dashboard/admin/assigned_order.html", context)
+        return render(request, "dashboard/admin/assigned_order.html", context)
+
+def delete_assigned_order(request, request_id):
+    if request.user.is_superuser:
+        assigned_order_request = AssignTechnician.objects.filter(request_id=request_id).first()
+        assigned_order_request.delete()
+        return redirect("assigned_order")
+
+def view_assigned_order(request, request_id):
+    if request.user.is_superuser:
+        assign_order_object = AssignTechnician.objects.filter(request_id=request_id).first()
+        context = {"assign_order_object":assign_order_object}
+        return render(request, "dashboard/admin/view_assigned_order.html", context)
+
+def technician_list(request):
+    if request.user.is_superuser:
+        technicians_list = TechnicianList.objects.all()
+
+        context = {"technicians_list":technicians_list}
+        return render(request, 'dashboard/admin/technician_list.html', context)
+
+def add_technician(request, employee_id):
+    if request.user.is_superuser:
+        if request.method == "POST":
+            if employee_id == 0:
+                forms = AddTechnicianForm(request.POST)
+            else:
+                add_technician_object = TechnicianList.objects.filter(employee_id=employee_id).first()
+                forms = AddTechnicianForm(request.POST, instance= add_technician_object)
+
+            if forms.is_valid():
+                forms.save()
+                messages.success(request, "Employee Added Succesfully")
+                return redirect("technician_list")
+        
+        else:
+            if employee_id == 0:
+                forms = AddTechnicianForm()
+            else:
+                add_technician_object = TechnicianList.objects.filter(employee_id=employee_id).first()
+                forms = AddTechnicianForm(instance= add_technician_object)
+
+        context = {"forms":forms}
+
+        return render(request, "dashboard/admin/add_technician.html", context)
+
+def delete_technician(request, employee_id):
+    if request.user.is_superuser:
+        delete_technician_object = TechnicianList.objects.get(employee_id=employee_id)
+        delete_technician_object.delete()
+        return redirect("technician_list")
+
+def work_report(request):
+    return render(request, "dashboard/admin/work_report.html")

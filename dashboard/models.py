@@ -46,3 +46,15 @@ class AssignTechnician(models.Model):
     
     def __str__(self):
         return self.name + " " + self.state
+
+class TechnicianList(models.Model):
+    employee_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254)
+    mobile = models.IntegerField()
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    joining_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return str(self.employee_id) + " - " + self.name + " - " + self.email

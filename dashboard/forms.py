@@ -1,5 +1,5 @@
 from django import forms
-from .models import SubmitRequest, AssignTechnician
+from .models import SubmitRequest, AssignTechnician, TechnicianList
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
@@ -36,7 +36,7 @@ class SubmitRequestForm(forms.ModelForm):
     zip_code = forms.CharField(widget= forms.NumberInput(attrs={"placeholder" : "Zip"}))
     mobile = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "Mobile"}))
     email = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "Email"}))
-    date = forms.DateTimeField(widget= forms.DateInput(attrs={"type":"date"}))
+    date = forms.DateTimeField(required=False, widget= forms.DateInput(attrs={"type":"date"}))
 
     class Meta:
         model = SubmitRequest
@@ -66,3 +66,13 @@ class AssignTechnicianForm(forms.ModelForm):
     class Meta:
         model = AssignTechnician
         fields = "__all__"
+
+class AddTechnicianForm(forms.ModelForm):
+    name = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "Employee Name"}))
+    city = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "City"}))
+    state = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "State"}))
+    email = forms.CharField(widget= forms.EmailInput(attrs={"placeholder" : "Email"}))
+    mobile = forms.CharField(widget= forms.TextInput(attrs={"placeholder" : "Mobile"}))
+    class Meta:
+        model = TechnicianList
+        exclude = ("joining_date",)

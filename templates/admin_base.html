@@ -35,7 +35,8 @@
         <a href="{% url 'admin_dashboard' %}" class="{% block dashboardactive %} {% endblock dashboardactive %}">Dashboard</a>
         <a href="{% url 'assigned_order' %}" class="{% block assignedactive %} {% endblock assignedactive %}">Assigned Order</a>
         <a href="{% url 'admin_requests' %}" class="{% block requestactive %} {% endblock requestactive %}">Pending Requests</a>
-        <a href=" " class="{% block technicianactive %} {% endblock technicianactive %}">Technician</a>
+        <a href="{% url 'technician_list' %}" class="{% block technicianactive %} {% endblock technicianactive %}">Technician</a>
+        <a href="{% url 'work_report' %}" class="{% block workreportactive %} {% endblock workreportactive %}">Work Report</a>
     </div>
 
     <div class="main-content">

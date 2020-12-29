@@ -1,0 +1,54 @@
+{% extends 'admin_base.html' %}
+
+{% block title %} Technicians List - OSMS {% endblock title %}
+
+{% block technicianactive %} active {% endblock technicianactive %}
+
+{% block body %}
+
+<div class="table-div" id="assigned-list-table">
+        <h2 class="md-heading text-center">Assigned Work Details</h2>
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Mobile</th>
+                <th>Joining Date</th>
+                <th>Actions</th>
+            </tr>
+
+            {% if technicians_list %}
+            {% for technician in technicians_list %}
+            <tr>
+                <td>{{technician.employee_id}}</td>
+                <td>{{technician.name}}</td>
+                <td>{{technician.email}}</td>
+                <td>{{technician.city}}</td>
+                <td>{{technician.state}}</td>
+                <td>{{technician.mobile}}</td>
+                <td>{{technician.joining_date}}</td>
+                <td><div class="action-btn flex-row-space-evenly">
+                    <a href="{% url 'add_technician' technician.employee_id %}" class="view-eye-btn"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'delete_technician' technician.employee_id %}" class="delete-assigned-btn"><i class="fas fa-trash-alt"></i></a>
+                </div></td>
+            </tr>
+
+            {% endfor %}
+
+            {% else %}
+            <tr>
+                <td colspan=9><div class="text-center">There are Employee added. Click on + button below to add one. </div></td>
+            </tr>
+            {% endif %}
+            
+        </table>
+    </div>
+
+    <div class="add-employee-btn">
+        <a href="{% url 'add_technician' 0 %}"><i class="fas fa-plus-circle"></i></a>
+    </div>
+
+{% endblock body %}
