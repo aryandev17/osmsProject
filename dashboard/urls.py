@@ -17,5 +17,6 @@ urlpatterns = [
     path("view_assigned_order/<int:request_id>", views.view_assigned_order, name="view_assigned_order"),
     path("add_technician/<int:employee_id>", views.add_technician, name="add_technician"),
     path("delete_technician/<int:employee_id>", views.delete_technician, name="delete_technician"),
-    path("work_report/", views.work_report, name="work_report")
+    path("work_report/", views.work_report, name="work_report"),
+    path("admin_change_password/", views.admin_change_password, name="admin_change_password")
 ]

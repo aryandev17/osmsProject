@@ -22,7 +22,7 @@
 </head>
 <body>
     <nav class="navbar flex-row-space-between">
-        <a href="{% url 'home' %}"><h2 class="logo sm-heading">OSMS</h2></a>
+        <a href="{% url 'home' %}"><h2 class="logo sm-heading">ARYAN</h2></a>
 
         <div class="log-sign-btn flex-row-space-between">
             {% if request.user.is_authenticated %}
@@ -37,6 +37,7 @@
         <a href="{% url 'admin_requests' %}" class="{% block requestactive %} {% endblock requestactive %}">Pending Requests</a>
         <a href="{% url 'technician_list' %}" class="{% block technicianactive %} {% endblock technicianactive %}">Technician</a>
         <a href="{% url 'work_report' %}" class="{% block workreportactive %} {% endblock workreportactive %}">Work Report</a>
+        <a href="{% url 'admin_change_password' %}" class="{% block adminpassactive %} {% endblock adminpassactive %}">Change Password</a>
     </div>
 
     <div class="main-content">

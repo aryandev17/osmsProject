@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
-from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm
+from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm, WorkReportForm
 from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -180,14 +180,18 @@ def admin_requests(request):
             forms = AssignTechnicianForm()
             context = {"forms":forms, "requests_object":requests_object}
         
-
         return render(request, "dashboard/admin/admin_requests.html", context)
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def assigned_order(request):
     if request.user.is_superuser:
         assigned_order_object = AssignTechnician.objects.all()
         context = {"assigned_orders":assigned_order_object}
         return render(request, "dashboard/admin/assigned_order.html", context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def delete_assigned_order(request, request_id):
     if request.user.is_superuser:
@@ -195,11 +199,17 @@ def delete_assigned_order(request, request_id):
         assigned_order_request.delete()
         return redirect("assigned_order")
 
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
+
 def view_assigned_order(request, request_id):
     if request.user.is_superuser:
         assign_order_object = AssignTechnician.objects.filter(request_id=request_id).first()
         context = {"assign_order_object":assign_order_object}
         return render(request, "dashboard/admin/view_assigned_order.html", context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def technician_list(request):
     if request.user.is_superuser:
@@ -207,6 +217,9 @@ def technician_list(request):
 
         context = {"technicians_list":technicians_list}
         return render(request, 'dashboard/admin/technician_list.html', context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def add_technician(request, employee_id):
     if request.user.is_superuser:
@@ -232,12 +245,56 @@ def add_technician(request, employee_id):
         context = {"forms":forms}
 
         return render(request, "dashboard/admin/add_technician.html", context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def delete_technician(request, employee_id):
     if request.user.is_superuser:
         delete_technician_object = TechnicianList.objects.get(employee_id=employee_id)
         delete_technician_object.delete()
         return redirect("technician_list")
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
 def work_report(request):
-    return render(request, "dashboard/admin/work_report.html")
+    if request.user.is_superuser:
+        if request.method == "POST":
+            forms = WorkReportForm(request.POST)
+            context = {"forms":forms}
+            if forms.is_valid():
+                start_date = forms.cleaned_data["start_date"]
+                end_date = forms.cleaned_data["end_date"]
+                work_report_object = AssignTechnician.objects.filter(date__range = (start_date, end_date))
+                context = {"forms":forms, "work_report_object":work_report_object}
+            else:
+                print("Main hoon else")
+        
+        else:
+            forms = WorkReportForm()
+            print("Main Hoon without Post")
+            context = {"forms":forms}
+        return render(request, "dashboard/admin/work_report.html", context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
+
+def admin_change_password(request):
+    if request.user.is_superuser:
+        if request.method == "POST":
+            forms = ChangePasswordForm(request.POST, request.user)
+            if forms.is_valid():
+                forms.save()
+                update_session_auth_hash(request, request.user)
+                messages.success(request, "Your Password has been change successfully")
+        
+        else:
+            forms = ChangePasswordForm(request.user)
+        
+        context = {"forms":forms}
+
+        return render(request, "dashboard/admin/admin_change_password.html", context)
+    
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")

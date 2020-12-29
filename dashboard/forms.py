@@ -76,3 +76,7 @@ class AddTechnicianForm(forms.ModelForm):
     class Meta:
         model = TechnicianList
         exclude = ("joining_date",)
+
+class WorkReportForm(forms.Form):
+    start_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={"type":"date", "placeholder":"Start Date"}))
+    end_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={"type":"date", "placeholder":"End Date"}))

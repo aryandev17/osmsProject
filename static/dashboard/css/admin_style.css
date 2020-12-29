@@ -105,6 +105,15 @@
     margin-right: 1rem;
 }
 
+.side-navbar a:nth-child(6):before{
+    content: "\f084";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
 .details-main-div{
     width: 17rem;
     margin-left: 3rem;
@@ -415,3 +424,62 @@ div.form-inputs{
 }
 
 /* ################ STYLING WORK REPORT PAGE ################# */
+
+.work-report-form{
+    margin-top: 4rem;
+    font-size: 1.7rem;
+}
+
+/* ############## STYLING ADMIN PASSWORD CHANGE PAGE ######### */
+
+.change-password-form-div{
+    padding: 2rem;
+    width: 35%;
+}
+
+.password-input:first-child::before{
+    content: "\f084";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-top: .7rem;
+}
+
+.password-input:nth-child(2)::before{
+    content: "\f13e";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+
+.password-input:nth-child(3)::before{
+    content: "\f3c1";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: .7rem;
+    margin-top: .7rem;
+}
+
+.change-password-form .submit-btn button{
+    padding: 1rem 4rem;
+    font-size: 1.7rem;
+    border-radius: 2rem;
+    color: white;
+    background-color: rgb(26, 126, 189);
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+
+.change-password-form .submit-btn button:hover{
+    background-color: rgb(48, 150, 214);
+}
