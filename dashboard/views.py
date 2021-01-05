@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, HttpRespons
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm, WorkReportForm
-from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList
+from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList, UserProfilePicture
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth import get_user_model
@@ -44,6 +44,10 @@ def login_user(request):
                         return redirect("admin_dashboard")
                     else:
                         return redirect("user_profile")
+                else:
+                    messages.error(request, "Check your username and password again !!")
+            else:
+                messages.error(request, "Check your username and password again !!")
         else:
             if request.session["message_log"] == True:
                 messages.success(request, "Your account has been created")
@@ -69,16 +73,38 @@ def logout_user(request):
 def user_profile(request):
     if request.user.is_authenticated:
         if not request.user.is_superuser:
+            user_image_object = UserProfilePicture.objects.filter(user=request.user).first()
             if request.method == "POST":
                 forms = UpdateUserForm(request.POST, instance=request.user)
+
                 if forms.is_valid():
+                    profile_picture = request.FILES.get("profile_picture")
+                    print("Mai hu bhai profile picture wala")
+                    print(profile_picture)
+                    if profile_picture:
+                        if user_image_object is not None:
+                            user_image_object.profile_picture = profile_picture
+                            user_image_object.save(update_fields = ["profile_picture"])
+                            print("ye hu mai bhai not none wala")
+                            print(user_image_object)
+                        else:
+                            user_profile_picture = UserProfilePicture(user=request.user, profile_picture=profile_picture)
+                            user_profile_picture.save()
+                            print("Ye Else wala hai kya")
+
                     forms.save()
+                    return redirect("user_profile")
                     messages.success(request, "Your Profile has been Updated")
-            
+                
+                else:
+                    print("Nahi Hua Bhai")
+                
             else:
                 forms = UpdateUserForm(instance=request.user)
+                print("Ye get wala hai kya")
+                print(UserProfilePicture.profile_picture)
 
-            context = {"forms":forms}
+            context = {"forms":forms, "user_image_object":user_image_object}
             return render(request, "dashboard/user/user_profile.html", context)
         else:
             return redirect("home")
@@ -242,7 +268,7 @@ def add_technician(request, employee_id):
                 add_technician_object = TechnicianList.objects.filter(employee_id=employee_id).first()
                 forms = AddTechnicianForm(instance= add_technician_object)
 
-        context = {"forms":forms}
+        context = {"forms":forms, "employee_id":employee_id}
 
         return render(request, "dashboard/admin/add_technician.html", context)
     
@@ -280,10 +306,37 @@ def work_report(request):
     else:
         return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
 
+def admin_edit_profile(request):
+    if request.user.is_superuser:
+        admin_image_object = UserProfilePicture.objects.filter(user=request.user).first()
+        if request.method == "POST":
+            forms = UpdateUserForm(request.POST, instance=request.user)
+
+            if forms.is_valid():
+                profile_picture = request.FILES.get("profile_picture")
+                if profile_picture:
+                    if admin_image_object is not None:
+                        admin_image_object.profile_picture = profile_picture
+                        admin_image_object.save(update_fields = ["profile_picture"])
+                    else:
+                        admin_profile_picture = UserProfilePicture(user=request.user, profile_picture=profile_picture)
+                        admin_profile_picture.save()
+
+                forms.save()
+                return redirect("admin_edit_profile")
+                messages.success(request, "Your Profile has been Updated")
+        else:
+            forms = UpdateUserForm(instance=request.user)
+
+        context = {"forms":forms, "admin_image_object":admin_image_object}
+        return render(request, "dashboard/admin/admin_edit_profile.html", context)
+    else:
+        return HttpResponse("<h1 style='text-align: center; margin-top: 30px;'> You are not Authorized for this page </h1>")
+
 def admin_change_password(request):
     if request.user.is_superuser:
         if request.method == "POST":
-            forms = ChangePasswordForm(request.POST, request.user)
+            forms = ChangePasswordForm(request.user, request.POST)
             if forms.is_valid():
                 forms.save()
                 update_session_auth_hash(request, request.user)
@@ -291,6 +344,7 @@ def admin_change_password(request):
         
         else:
             forms = ChangePasswordForm(request.user)
+            print(forms)
         
         context = {"forms":forms}
 

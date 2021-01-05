@@ -106,6 +106,15 @@
 }
 
 .side-navbar a:nth-child(6):before{
+    content: "\f03e";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
+.side-navbar a:nth-child(7):before{
     content: "\f084";
     font-family: 'Font Awesome\ 5 Free';
     font-size: 1.7rem;
@@ -428,6 +437,131 @@ div.form-inputs{
 .work-report-form{
     margin-top: 4rem;
     font-size: 1.7rem;
+}
+
+/* ############### STYLING ADMIN EDIT PASSWORD PAGE ############### */
+
+/* ############## STYLING USER CHANGE FORM ############## */
+
+.image-icon label{
+    width: 29.5rem;
+    height: 19rem;
+}
+
+.image-icon label::before{
+    content: "\f03e";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 17rem;
+    cursor: pointer;
+    color: rgb(101, 101, 221, 0.9);
+}
+
+.profile-image{
+    width: 35rem;
+    height: 22rem;
+}
+
+.profile-image .profile-image-div{
+    margin-left: 3rem;
+}
+
+.profile-image .profile-image-div img{
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+}
+
+.choose-image-no-hidden{
+    margin: 2.5rem 0;
+}
+
+.choose-image-no-hidden label{
+    padding: 1rem 3rem;
+    font-size: 1.6rem;
+    background-color: rgb(23, 144, 231);
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease-in;
+    border-radius: .5rem;
+}
+
+.choose-image-no-hidden label:hover{
+    background-color: rgb(26, 126, 189);
+}
+
+.choose-image-no-hidden input{
+    display: none;
+}
+
+.edit-profile-heading{
+    margin-bottom: 2rem;
+}
+
+.user-admin-change-form{
+    width: 40rem;
+    padding: 3rem;
+}
+
+.user-admin-change-fields input{
+    padding: .7rem 1rem;
+    outline: none;
+    font-size: 1.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.user-admin-change-fields:first-child::before{
+    content: "\f4ff";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: .5rem;
+    margin-top: .7rem;
+}
+
+.user-admin-change-fields:nth-child(2)::before{
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+.user-admin-change-fields:nth-child(3)::before{
+    content: "\f007";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1.2rem;
+    margin-top: .7rem;
+}
+
+.user-admin-change-fields:nth-child(4)::before{
+    content: "\f0e0";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 2rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+    margin-top: .7rem;
+}
+
+.user-admin-change-form .submit-btn{
+    padding: 1.2rem 4rem;
+    border-radius: 2rem;
+    background-color: rgb(69, 176, 243);
+    color: white;
+    border: none;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.user-admin-change-form .submit-btn:hover{
+    background-color: rgb(49, 152, 216);
 }
 
 /* ############## STYLING ADMIN PASSWORD CHANGE PAGE ######### */

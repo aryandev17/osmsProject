@@ -1,25 +1,25 @@
-{% extends 'dashboard_base.html' %}
+{% extends 'admin_base.html' %}
 
-{% block profileactive %} active {% endblock profileactive %}
+{% block title %} Edit Profile - ARYAN {% endblock title %}
 
-{% block title %}User Profile - ARYAN {% endblock title %}
+{% block adminprofileactive %} active {% endblock adminprofileactive %}
 
 {% block body %}
 
-<div class="user-change-form">
+<div class="user-admin-change-form">
 
     <div class="edit-profile-heading">
         <h2 class="md-heading">Edit your Profile</h2>
     </div>
-    <form action="{% url 'user_profile' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <form action="{% url 'admin_edit_profile' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <div
-            class="picture-div flex-column-no-center {% if user_image_object %} profile-image {% else %} image-icon {% endif %}">
+            class="picture-div flex-column-no-center {% if admin_image_object %} profile-image {% else %} image-icon {% endif %}">
 
-            {% if user_image_object %}
+            {% if admin_image_object %}
 
-            <a href="{{user_image_object.profile_picture.url}}" target="_blank">
+            <a href="{{admin_image_object.profile_picture.url}}" target="_blank">
             <div class="profile-image-div">
-                <img src="{{user_image_object.profile_picture.url}}" alt="">
+                <img src="{{admin_image_object.profile_picture.url}}" alt="">
             </div>
         </a>
 
@@ -29,7 +29,7 @@
 
             {% endif %}
 
-            {% if user_image_object %}
+            {% if admin_image_object %}
 
             <div class="choose-image-no-hidden">
                 <label for="id_profile_picture" id="pp_label">Change Profile Picture</label>
@@ -43,13 +43,10 @@
 
         </div>
 
-        <div class="user-change-input flex-column-no-center">
+        <div class="user-admin-change-input flex-column-no-center">
             {% for form in forms %}
-            <div class="user-change-fields flex-row-no-center">{{form}}</div>
+            <div class="user-admin-change-fields flex-row-no-center">{{form}}</div>
             {% endfor %}
-
-            {{forms2}}
-
         </div>
 
         <button type="submit" class="submit-btn"> Submit </button>

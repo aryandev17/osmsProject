@@ -15,14 +15,6 @@
 
 <body>
     <div class="container flex-column-center" style="margin-top: 4rem;">
-        {% for form in forms %}
-        {% if form.errors %}
-        <div class="messages-div flex-row-center">
-            <h2 class="danger">{{form.errors}}</h2>
-            <i class="fas fa-times cross"></i>
-        </div>
-        {% endif %}
-        {% endfor %}
 
         {% if messages %}
             <div class="messages-div flex-row-center">
@@ -31,7 +23,7 @@
                 <i class="fas fa-times cross"></i>
                 {% endfor %}
             </div>
-            {% endif %}
+        {% endif %}
 
         <div class="signup-login-heading login-heading flex-row-center">
             <h1 class="sm-heading">Log in to continue</h1>

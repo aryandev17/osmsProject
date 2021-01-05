@@ -7,7 +7,11 @@
 {% block body %}
 
 <div class="add-technician-form flex-column-center">
+    {% if employee_id == 0 %}
     <h2 class="md-heading text-center">Add an Employee</h2>
+    {% else %}
+    <h2 class="md-heading text-center">Edit Employee Details</h2>
+    {% endif %}
 
     <form action="" method="post"> {% csrf_token %}
     <div class="form-inputs flex-column-center">

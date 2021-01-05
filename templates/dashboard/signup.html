@@ -17,7 +17,7 @@
     <div class="container flex-column-center">
         {% for form in forms %}
         {% if form.errors %}
-        <div class="messages-div flex-row-center">
+        <div style="margin-top: 1rem;" class="messages-div flex-row-center">
             <h2 class="danger">{{form.errors}}</h2>
             <i class="fas fa-times cross"></i>
         </div>

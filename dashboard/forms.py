@@ -1,5 +1,5 @@
 from django import forms
-from .models import SubmitRequest, AssignTechnician, TechnicianList
+from .models import SubmitRequest, AssignTechnician, TechnicianList, UserProfilePicture
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
@@ -80,3 +80,9 @@ class AddTechnicianForm(forms.ModelForm):
 class WorkReportForm(forms.Form):
     start_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={"type":"date", "placeholder":"Start Date"}))
     end_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={"type":"date", "placeholder":"End Date"}))
+
+# class ProfilePicForm(forms.ModelForm):
+#     profile_picture = forms.ImageField(label=" ",  widget=forms.FileInput(attrs={"hidden":True}))
+#     class Meta:
+#         model = UserProfilePicture
+#         fields = ["profile_picture"]

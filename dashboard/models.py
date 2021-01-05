@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -58,3 +59,13 @@ class TechnicianList(models.Model):
 
     def __str__(self):
         return str(self.employee_id) + " - " + self.name + " - " + self.email
+
+class UserProfilePicture(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to="dashboard/")
+
+    def __str__(self):
+        return str(self.user) + " " + "Profile Picture"
+    
+
+
