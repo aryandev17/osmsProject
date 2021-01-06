@@ -1,11 +1,13 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib import messages
 from .forms import ContactForm
+from dashboard.models import UserReview
 from .models import Contact
 
 # Create your views here.
 
 def home(request):
+    review_object = UserReview.objects.all()
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -16,7 +18,7 @@ def home(request):
     else:
         form = ContactForm()
 
-    context = {"form":form}
+    context = {"form":form, "review_object":review_object}
     return render(request, "home/index.html", context)
 
 def signup_user(request):

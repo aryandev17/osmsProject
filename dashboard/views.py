@@ -79,30 +79,19 @@ def user_profile(request):
 
                 if forms.is_valid():
                     profile_picture = request.FILES.get("profile_picture")
-                    print("Mai hu bhai profile picture wala")
-                    print(profile_picture)
                     if profile_picture:
                         if user_image_object is not None:
                             user_image_object.profile_picture = profile_picture
                             user_image_object.save(update_fields = ["profile_picture"])
-                            print("ye hu mai bhai not none wala")
-                            print(user_image_object)
                         else:
                             user_profile_picture = UserProfilePicture(user=request.user, profile_picture=profile_picture)
                             user_profile_picture.save()
-                            print("Ye Else wala hai kya")
 
                     forms.save()
-                    return redirect("user_profile")
-                    messages.success(request, "Your Profile has been Updated")
-                
-                else:
-                    print("Nahi Hua Bhai")
-                
+                    messages.success(request, "Your Profile has been Updated")         
+                    # return redirect("user_profile")
             else:
                 forms = UpdateUserForm(instance=request.user)
-                print("Ye get wala hai kya")
-                print(UserProfilePicture.profile_picture)
 
             context = {"forms":forms, "user_image_object":user_image_object}
             return render(request, "dashboard/user/user_profile.html", context)
@@ -323,8 +312,8 @@ def admin_edit_profile(request):
                         admin_profile_picture.save()
 
                 forms.save()
-                return redirect("admin_edit_profile")
                 messages.success(request, "Your Profile has been Updated")
+                # return redirect("admin_edit_profile")
         else:
             forms = UpdateUserForm(instance=request.user)
 

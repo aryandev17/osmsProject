@@ -7,6 +7,23 @@
 {% block body %}
 
 <div class="user-admin-change-form">
+    {% if messages %}
+            <div style="width: 55%; margin: auto; margin-bottom: 2rem;" class="messages-div flex-row-center">
+                {% for message in messages %}
+                <h2 class="{{message.tags}} sm-heading">{{message}} {{message.extra_tags}}</h2>
+                <i class="fas fa-times cross"></i>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+    {% for form in forms %}
+        {% if form.errors %}
+        <div class="messages-div flex-row-center">
+            <h2 class="danger">{{form.errors}}</h2>
+            <i class="fas fa-times cross"></i>
+        </div>
+        {% endif %}
+        {% endfor %}
 
     <div class="edit-profile-heading">
         <h2 class="md-heading">Edit your Profile</h2>

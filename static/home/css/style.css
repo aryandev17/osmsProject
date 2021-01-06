@@ -28,16 +28,23 @@
     color: white;
 }
 
-.navbar a:not(.btn){
+.navbar .item a{
     padding: 1.3rem 1.5rem;
     font-size: 2rem;
     color: white;
     transition: all .3s ease-in;
 }
 
-.navbar a:not(.btn):hover{
+.navbar .item a:hover{
     border-bottom: .4rem solid black;
     background-color: rgba(0, 0, 0, 0.25);
+}
+
+.navbar .user-image img{
+    width: 4rem; 
+    height: 4rem; 
+    border-radius: 50%; 
+    margin-top: .4rem;
 }
 
 .navbar a.btn{
@@ -433,6 +440,7 @@
     padding: 1.2rem 5rem;
     transition: all 0.3s ease-in;
     font-family: 'Playfair Display', serif;
+    cursor: pointer;
     /* background-color: rgba(19, 39, 223, 0.5); */
 }
 
