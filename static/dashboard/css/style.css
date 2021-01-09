@@ -156,6 +156,10 @@ a.log-link::before{
     background-color: rgba(0, 0, 0, 0.15);
 }
 
+.hamburger{
+    display: none;
+}
+
 /* #################### STYLING SIDE NAVIGATION BAR ############### */
 
 .side-navbar{

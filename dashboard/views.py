@@ -89,7 +89,6 @@ def user_profile(request):
 
                     forms.save()
                     messages.success(request, "Your Profile has been Updated")         
-                    # return redirect("user_profile")
             else:
                 forms = UpdateUserForm(instance=request.user)
 
