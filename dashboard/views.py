@@ -18,7 +18,7 @@ def signup_user(request):
             forms = SignupForm(request.POST)
             if forms.is_valid():
                 forms.save() 
-                request.session["message_log"] = True
+                # request.session["message_log"] = True
                 return redirect("login")
         else:
             forms = SignupForm()
@@ -50,12 +50,7 @@ def login_user(request):
             else:
                 messages.error(request, "Check your username and password again !!")
         else:
-            if request.session["message_log"] == True:
-                messages.success(request, "Your account has been created")
-                request.session["message_log"] = False
-                forms = AuthenticationForm()
-            else:
-                forms = AuthenticationForm()
+            forms = AuthenticationForm()
 
 
         context = {"forms":forms}
@@ -170,15 +165,15 @@ def review(request):
                     review_title = forms.cleaned_data["review_title"]
                     user_review_object = UserReview(user_details=user_details_object, review=review, review_title=review_title)
                     user_review_object.save()
-                    review_message = "Your Review Has been Submitted"
-                    request.session["review_message"] = review_message
+                    # review_message = "Your Review Has been Submitted"
+                    # request.session["review_message"] = review_message
                     return redirect("review")
             else:
-                if "review_message" in request.session:
-                    forms = UserReviewForm()
-                    messages.success(request, request.session["review_message"])
-                else:                  
-                    forms = UserReviewForm()
+                # if "review_message" in request.session:
+                #     forms = UserReviewForm()
+                #     messages.success(request, request.session["review_message"])
+                # else:                  
+                forms = UserReviewForm()
             context = {"forms":forms}
             return render(request, "dashboard/user/review.html", context)
         else:
