@@ -1,0 +1,22 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %} Write a Review - ARYAN {% endblock title %}
+
+{% block reviewactive %} active {% endblock reviewactive %}
+
+{% block body %}
+<div class="review-form">
+    <h2 class="md-heading">Write a Review</h2>
+    <form action="" method="post"> {% csrf_token %}
+        <div class="review-form-input flex-column-no-center">
+            {% for form in forms %}
+            {{form}}
+            {% endfor %}
+        </div>
+        
+        <div class="submit-btn">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}

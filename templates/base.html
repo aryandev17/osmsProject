@@ -43,27 +43,14 @@
                 <a href="{% url 'login' %}" class="btn">Log In</a>
                 <a href="{% url 'signup' %}" class="btn">Sign Up</a>
 
-                {% endif %}
-
-                {% if image %}
-                {% if request.user.is_superuser %}
-
-                <a href="{% url 'admin_edit_profile' %}" class="user-image">
-                    <img src="{{image.profile_picture.url}}"
-                        alt="">
-                </a>
-                <a href="{% url 'logout' %}" class="btn">Log Out</a>
-
                 {% else %}
 
-                <a href="{% url 'user_profile' %}" class="user-image">
-                    <img style="width: 4rem; height: 4rem; border-radius: 50%;" src="{{image.profile_picture.url}}"
-                        alt="">
-                </a>
                 <a href="{% url 'logout' %}" class="btn">Log Out</a>
 
                 {% endif %}
-                {% endif %}
+
+
+                
 
             </div>
 

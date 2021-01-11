@@ -227,6 +227,15 @@ a.log-link::before{
     margin-right: 1rem;
 }
 
+.side-navbar a:nth-child(5):before{
+    content: "\f5c0";
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 1.7rem;
+    color: black;
+    font-weight: 900;
+    margin-right: 1rem;
+}
+
 .main-content{
     margin-left: 25rem;
 }
@@ -494,4 +503,45 @@ input{
 
 .change-password-form .submit-btn button:hover{
     background-color: rgb(48, 150, 214);
+}
+
+/* ############## STYLING REVIEW PAGE ############# */
+
+.review-form h2{
+    margin: 3rem ;
+}
+
+.review-form-input input{
+    width: 96%;
+    margin-left: 3rem;
+    outline: none;
+}
+
+.review-form-input textarea{
+    width: 96%;
+    padding: .5rem;
+    margin-left: 3rem;
+    font-family: "Arial";
+    font-size: 1.33rem;
+    outline: none;
+}
+
+.review-form .submit-btn{
+    margin-left: 3rem;
+}
+
+.review-form .submit-btn button{
+    padding: 1.2rem 4rem;
+    border-radius: 2rem;
+    background-color: rgb(69, 176, 243);
+    color: white;
+    border: none;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all .3s ease-in;
+}
+
+.review-form .submit-btn button:hover{
+    background-color: rgb(26, 126, 189);
 }

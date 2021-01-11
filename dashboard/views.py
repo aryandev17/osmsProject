@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, HttpRespons
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm, WorkReportForm
-from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList, UserProfilePicture
+from home.forms import UserReviewForm
+from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList, UserProfilePicture, UserReview
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth import get_user_model
@@ -153,6 +154,33 @@ def change_password(request):
 
             context = {"forms":forms}
             return render(request, "dashboard/user/change_password.html", context)
+        else:
+            return redirect("home")
+    else:
+        return redirect("login")
+
+def review(request):
+    user_details_object = UserProfilePicture.objects.get(user=request.user)
+    if request.user.is_authenticated:
+        if not request.user.is_superuser:
+            if request.method == "POST":
+                forms = UserReviewForm(request.POST)
+                if forms.is_valid():
+                    review = forms.cleaned_data["review"]
+                    review_title = forms.cleaned_data["review_title"]
+                    user_review_object = UserReview(user_details=user_details_object, review=review, review_title=review_title)
+                    user_review_object.save()
+                    review_message = "Your Review Has been Submitted"
+                    request.session["review_message"] = review_message
+                    return redirect("review")
+            else:
+                if "review_message" in request.session:
+                    forms = UserReviewForm()
+                    messages.success(request, request.session["review_message"])
+                else:                  
+                    forms = UserReviewForm()
+            context = {"forms":forms}
+            return render(request, "dashboard/user/review.html", context)
         else:
             return redirect("home")
     else:
