@@ -68,12 +68,13 @@ class UserProfilePicture(models.Model):
         return str(self.user) + " " + "Profile Picture"
 
 class UserReview(models.Model):
-    user_details = models.OneToOneField(UserProfilePicture, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user_details = models.ForeignKey(UserProfilePicture, on_delete=models.CASCADE, null=True)
     review_title = models.CharField(max_length=50)
     review = models.TextField()
 
     def __str__(self):
-        return self.user_details.user.first_name
+        return "self.user_details.user.first_name"
     
 
 

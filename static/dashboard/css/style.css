@@ -365,6 +365,10 @@ a.log-link::before{
 
 /* ############### STYLING SUBMIT REQUEST PAGE ############## */
 
+.submit-heading{
+    margin-bottom: 1.5rem;
+}
+
 .submit-request-form{
     width: 96%;
     padding: 2rem;
@@ -452,6 +456,10 @@ input{
 }
 
 /* ############### STYLING CHANGE PASSWORD FORM ################ */
+
+.change-pass-heading{
+    margin-bottom: 2rem;
+}
 
 .change-password-form-div{
     padding: 2rem;

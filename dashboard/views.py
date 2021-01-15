@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
-from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm, WorkReportForm
+from .forms import SignupForm, UpdateUserForm, SubmitRequestForm, ChangePasswordForm, AssignTechnicianForm, AddTechnicianForm, WorkReportForm, UserProfilePicture
 from home.forms import UserReviewForm
 from .models import ServiceStatus, SubmitRequest, AssignTechnician, TechnicianList, UserProfilePicture, UserReview
 from django.contrib import messages
@@ -18,7 +18,7 @@ def signup_user(request):
             forms = SignupForm(request.POST)
             if forms.is_valid():
                 forms.save() 
-                # request.session["message_log"] = True
+                request.session["message_log"] = True
                 return redirect("login")
         else:
             forms = SignupForm()
@@ -50,7 +50,12 @@ def login_user(request):
             else:
                 messages.error(request, "Check your username and password again !!")
         else:
-            forms = AuthenticationForm()
+            if request.session["message_log"] == True:
+                messages.success(request, "Your account has been created")
+                forms = AuthenticationForm()
+                request.session["message_log"] = False
+            else:
+                forms = AuthenticationForm()
 
 
         context = {"forms":forms}
@@ -70,6 +75,7 @@ def user_profile(request):
     if request.user.is_authenticated:
         if not request.user.is_superuser:
             user_image_object = UserProfilePicture.objects.filter(user=request.user).first()
+            review_object = UserReview.objects.filter(user=request.user)
             if request.method == "POST":
                 forms = UpdateUserForm(request.POST, instance=request.user)
 
@@ -79,9 +85,16 @@ def user_profile(request):
                         if user_image_object is not None:
                             user_image_object.profile_picture = profile_picture
                             user_image_object.save(update_fields = ["profile_picture"])
+                            for review in review_object:
+                                review.user_details = user_image_object
+                                review.save(update_fields=["user_details"])
                         else:
                             user_profile_picture = UserProfilePicture(user=request.user, profile_picture=profile_picture)
                             user_profile_picture.save()
+                            user_image_object = UserProfilePicture.objects.filter(user=request.user).first()
+                            for review in review_object:
+                                review.user_details = user_image_object
+                                review.save(update_fields=["user_details"])
 
                     forms.save()
                     messages.success(request, "Your Profile has been Updated")         
@@ -155,7 +168,7 @@ def change_password(request):
         return redirect("login")
 
 def review(request):
-    user_details_object = UserProfilePicture.objects.get(user=request.user)
+    user_details_object = UserProfilePicture.objects.filter(user=request.user).first()
     if request.user.is_authenticated:
         if not request.user.is_superuser:
             if request.method == "POST":
@@ -163,17 +176,16 @@ def review(request):
                 if forms.is_valid():
                     review = forms.cleaned_data["review"]
                     review_title = forms.cleaned_data["review_title"]
-                    user_review_object = UserReview(user_details=user_details_object, review=review, review_title=review_title)
+                    if user_details_object:   
+                        user_review_object = UserReview(user=request.user, user_details=user_details_object, review=review, review_title=review_title)
+                    else:
+                        user_review_object = UserReview(user=request.user, review=review, review_title=review_title)
                     user_review_object.save()
-                    # review_message = "Your Review Has been Submitted"
-                    # request.session["review_message"] = review_message
-                    return redirect("review")
+                    messages.success(request, "Your Review has been submitted")
+                    forms = UserReviewForm()
             else:
-                # if "review_message" in request.session:
-                #     forms = UserReviewForm()
-                #     messages.success(request, request.session["review_message"])
-                # else:                  
                 forms = UserReviewForm()
+                                      
             context = {"forms":forms}
             return render(request, "dashboard/user/review.html", context)
         else:
@@ -209,7 +221,6 @@ def admin_requests(request):
             if forms.is_valid():
                 forms.save()
                 delete_request = SubmitRequest.objects.filter(serial_no=request.POST.get("request_id")).first()
-                print(delete_request)
                 delete_request.delete()
                 return redirect("admin_requests")
 
@@ -305,12 +316,9 @@ def work_report(request):
                 end_date = forms.cleaned_data["end_date"]
                 work_report_object = AssignTechnician.objects.filter(date__range = (start_date, end_date))
                 context = {"forms":forms, "work_report_object":work_report_object}
-            else:
-                print("Main hoon else")
         
         else:
             forms = WorkReportForm()
-            print("Main Hoon without Post")
             context = {"forms":forms}
         return render(request, "dashboard/admin/work_report.html", context)
     
@@ -355,7 +363,6 @@ def admin_change_password(request):
         
         else:
             forms = ChangePasswordForm(request.user)
-            print(forms)
         
         context = {"forms":forms}
 

@@ -25,10 +25,12 @@
         <a href="{% url 'home' %}"><h2 class="logo sm-heading">ARYAN</h2></a>
 
         <div class="log-sign-btn flex-row-space-between">
-            {% if request.user.is_authenticated %}
-            {% comment %} <a href="{% url 'admin_edit_profile' %}" class="user-image">
-            <img style="width: 4rem; height: 4rem; border-radius: 50%;" src="{{image.profile_picture.url}}" alt="">
-            </a> {% endcomment %}
+            {% if request.user.is_superuser %}
+            {% if image %}
+            <a href="{% url 'admin_edit_profile' %}" class="user-image">
+            <img src="{{image.profile_picture.url}}" alt="">
+            </a>
+            {% endif %}
             <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
             {% endif %}
         </div>

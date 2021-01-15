@@ -45,12 +45,25 @@
 
                 {% else %}
 
+                {% if image %}
+
+                {% if not request.user.is_superuser %}
+                <a href="{% url 'user_profile' %}" class="user-image">
+                    <img src="{{image.profile_picture.url}}" alt="">
+                </a>
+
+                {% else %}
+
+                <a href="{% url 'admin_edit_profile' %}" class="user-image">
+                    <img src="{{image.profile_picture.url}}" alt="">
+                </a>
+
+                {% endif %}
+                {% endif %}
+                
                 <a href="{% url 'logout' %}" class="btn">Log Out</a>
 
                 {% endif %}
-
-
-                
 
             </div>
 

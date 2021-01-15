@@ -109,9 +109,15 @@
         </div>
 
         <div class="testimonial-part flex-row-center">
+            {% if review.user_details %}
             <div class="testimonial-img">
                 <img src="{{review.user_details.profile_picture.url}}" alt="">
             </div>
+            {% else %}
+            <div class="testimonial-img">
+                <img src="{% static 'home/img/default.png' %}" alt="">
+            </div>
+            {% endif %}
 
             <div class="testimonial-content flex-column-center">
                 <h2 class="lg-heading">{{review.review_title}}</h2>
